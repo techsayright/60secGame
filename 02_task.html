@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 minute game</title>
+</head>
+
+<body>
+    <center>
+        <h1 id="header">60 Second game</h1>
+        <br><br>
+        <img src="lion.jpg" alt="lion" id="img"><br><br>
+        <input type="text" name="10sec" id="10sec" placeholder="Enter Image Name">
+        <table id="mytable" border="1"></table>
+        <h1 id="scoreBoard"></h1>
+    </center>
+
+    <script>
+        (function changeImage() {
+            var ary = ["lion", "elephant", "peacock", "ship", "tiger", "zebra"];
+            var inpAry = [];
+
+            let init = 0;
+            var showTable = true;
+            var totalScore = 0
+
+            setInterval(() => {
+                if (init >= 5) {
+
+                    document.getElementById('header').innerHTML = "Game Over";
+                    if (document.getElementById('img') && document.getElementById('10sec')) {
+                        inpAry.push(document.getElementById('10sec').value);
+                        document.getElementById('img').remove();
+                        document.getElementById('10sec').remove();
+                    }
+
+                    // compare ary and inpAry && show table
+                    if (showTable) {
+                        var table = document.getElementById('mytable');
+
+                        var row = table.insertRow(0);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        cell1.innerHTML = "Given Name";
+                        cell2.innerHTML = "Entered Name";
+                        cell3.innerHTML = "Result";
+
+                        var row = table.insertRow(1);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        cell1.innerHTML = ary[0];
+                        cell2.innerHTML = inpAry[0] ? inpAry[0] : "null";
+                        cell3.innerHTML = ary[0] === inpAry[0] ? 10 : 0;
+                        if (ary[0] === inpAry[0]) {
+                            totalScore += 10;
+                        }
+
+
+                        var row = table.insertRow(2);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        cell1.innerHTML = ary[1];
+                        cell2.innerHTML = inpAry[1] ? inpAry[1] : "null";
+                        cell3.innerHTML = ary[1] === inpAry[1] ? 10 : 0;
+                        if (ary[1] === inpAry[1]) {
+                            totalScore += 10;
+                        }
+
+
+                        var row = table.insertRow(3);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        cell1.innerHTML = ary[2];
+                        cell2.innerHTML = inpAry[2] ? inpAry[2] : "null";
+                        cell3.innerHTML = ary[2] === inpAry[2] ? 10 : 0;
+                        if (ary[2] === inpAry[2]) {
+                            totalScore += 10;
+                        }
+
+
+                        var row = table.insertRow(4);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        cell1.innerHTML = ary[3];
+                        cell2.innerHTML = inpAry[3] ? inpAry[3] : "null";
+                        cell3.innerHTML = ary[3] === inpAry[3] ? 10 : 0;
+                        if (ary[3] === inpAry[3]) {
+                            totalScore += 10;
+                        }
+
+
+                        var row = table.insertRow(5);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        cell1.innerHTML = ary[4];
+                        cell2.innerHTML = inpAry[4] ? inpAry[4] : "null";
+                        cell3.innerHTML = ary[4] === inpAry[4] ? 10 : 0;
+                        if (ary[4] === inpAry[4]) {
+                            totalScore += 10;
+                        }
+
+
+                        var row = table.insertRow(6);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        var cell3 = row.insertCell(2);
+                        cell1.innerHTML = ary[5];
+                        cell2.innerHTML = inpAry[5] ? inpAry[5] : "null";
+                        cell3.innerHTML = ary[5] === inpAry[5] ? 10 : 0;
+                        if (ary[5] === inpAry[5]) {
+                            totalScore += 10;
+                        }
+
+
+                        document.getElementById("scoreBoard").innerHTML = `Total Score: ${totalScore} `
+
+                        showTable = false;
+
+                    }
+
+
+                    return;
+                }
+                inpAry.push(document.getElementById('10sec').value);
+                document.getElementById('10sec').value = "";
+
+                if (init == 0) {
+                    document.getElementById('img').src = `http://127.0.0.1:5500/${ary[1]}.jpg`;
+                    init++
+                } else {
+                    document.getElementById('img').src = `http://127.0.0.1:5500/${ary[++init]}.jpg`;
+                }
+
+            }, 10000);
+
+            // console.log(inpAry);
+        })()
+    </script>
+</body>
+
+</html>
